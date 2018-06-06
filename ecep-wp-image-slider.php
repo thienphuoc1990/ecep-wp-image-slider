@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: itvn.org Wordpress Image Slider
+ * Plugin Name: ECEP Wordpress Image Slider
  * Plugin URI: https://github.com/thienphuoc1990/ecep-wp-image-slider
  * Description: This is a plugin for image slider with carousel bootstrap
  * Version: 1.0 
@@ -22,7 +22,7 @@ if (!class_exists('ECEP_WP_Image_Slider')) {
 			
 		}
 
-		/*==============	itvn.org Create Sliders Post Type	======================*/
+		/*==============	ECEP Create Sliders Post Type	======================*/
 		function create_slider_post_type() {
 			/* Set labels for post type fields */
 			$labels = array(
@@ -58,7 +58,7 @@ if (!class_exists('ECEP_WP_Image_Slider')) {
 			register_post_type( 'slider', $args);
 		}
 
-		/*==============	itvn.org Add Moocsnews Slider Fields Meta Box	======================*/
+		/*==============	ECEP Add Moocsnews Slider Fields Meta Box	======================*/
 		function add_slider_fields_meta_box() {
 			add_meta_box(
 				'slider_fields_meta_box', // $id
@@ -84,7 +84,7 @@ if (!class_exists('ECEP_WP_Image_Slider')) {
 
 			<?php }
 
-			/*==============	itvn.org Save Moocsnews Slider Fields Meta Box	======================*/
+			/*==============	ECEP Save Moocsnews Slider Fields Meta Box	======================*/
 			function save_slider_fields_meta( $post_id ) {   
 			// verify nonce
 				if ( !wp_verify_nonce( $_POST['slider_meta_box_nonce'], basename(__FILE__) ) ) {
@@ -113,7 +113,7 @@ if (!class_exists('ECEP_WP_Image_Slider')) {
 				}
 			}
 
-			/*==============    itvn.org Create Slider Location Custom Taxonomy Type   ======================*/
+			/*==============    ECEP Create Slider Location Custom Taxonomy Type   ======================*/
 			function create_slider_location_nonhierarchical_taxonomy() {
 
 				$labels = array(
@@ -177,7 +177,7 @@ if (!class_exists('ECEP_WP_Image_Slider')) {
 						if($i == 0){
 							$slides[] = 
 						 	'<div class="carousel-item active">
-						      	<img class="d-block w-100" src="'.$imghtml.'" alt="First slide">
+						      	<img class="d-block w-100" src="'.$imghtml.'" alt="'.get_the_title().'">
 								  	<div class="carousel-caption d-none d-md-block">
 									    '.$meta['button'].'
 								  	</div>
@@ -186,7 +186,7 @@ if (!class_exists('ECEP_WP_Image_Slider')) {
 						}else{
 							$slides[] = 
 						 	'<div class="carousel-item">
-						      	<img class="d-block w-100" src="'.$imghtml.'" alt="First slide">
+						      	<img class="d-block w-100" src="'.$imghtml.'" alt="'.get_the_title().'">
 								  	<div class="carousel-caption d-none d-md-block">
 									    '.$meta['button'].'
 								  	</div>
